@@ -1,3 +1,29 @@
-() = change whatever is inside the brackets
+<> = replace with my own values
+()- = example
+{} = code basis JUST COPY WHAT IS INSIDE SAID BRACKETS 
 
-Create Bucket: aws s3api create-bucket --bucket (my-bucket-ikuesan-123999) --region (us-east-1)
+Create Bucket:
+(example)-    aws s3api create-bucket --bucket <my-bucket-ikuesan-123999> --region <us-east-1> # for US-EAST-1 Specifically!! for any other regions...
+(example)-    aws s3api create-bucket \
+                --bucket <my-bucket-ikuesan-123999> \
+                --region <eu-north-1> \
+                --create-bucket-configuration LocationConstraint=<eu-north-1> # for All other regions
+
+{aws s3api create-bucket --bucket <> --region us-east-1}
+{aws s3api create-bucket \
+    --bucket <> \
+    --region <> \
+    --create-bucket-configuration LocationConstraint=<>}
+--
+Delete Bucket:
+(example)-    aws s3api delete-bucket --bucket <my-bucket-ikuesan-123999> # deletes the whole bucket <my-bucket-ikuesan-123999>
+(example)-    aws s3 rm s3://<my-bucket-ikuesan-123999> --recursive # deletes all objects inside of <my-bucket-ikuesan-123999> 
+
+{aws s3api delete-bucket --bucket <>}
+{aws s3 rm s3://<> --recursive}
+--
+List Bucket:
+(example)-    aws s3 ls
+
+{aws s3 ls}
+--
