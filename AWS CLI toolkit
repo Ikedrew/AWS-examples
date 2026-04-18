@@ -1,5 +1,9 @@
 AWS CLI dev-toolkit
 
+- See AWS CLI command reference: for more commands
+https://docs.aws.amazon.com/cli/latest/
+...THIS IS JUST MY EVERYDAY USE!!!
+
 000.1 LOGIN/
 > 000.1.1 Access Keys.md
 aws configure
