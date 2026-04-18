@@ -1,9 +1,59 @@
 AWS CLI dev-toolkit
 
-000-ENVIRONMENT/
->CLI-setup.md & Terminal-basics.md
--  Turn auto prompt on & off:-
+000.1 LOGIN/
+> 000.1.1 Access Keys.md
+aws configure
+
+000.2-ENVIRONMENT/
+> 000.2.1 CLI-setup.md & Terminal-basics.md
+-   000.2.1.1 - Auto prompt enable:-
 aws configure set cli_auto_prompt on
+-   000.2.1.2 - Auto prompt disable:- 
 aws configure set cli_auto_prompt off
--  Check it's status:-
+-   000.2.1.3 - Check it's status:-
 aws configure get cli_auto_prompt
+
+001-S3/
+> 001.1 Create Bucket 
+-   001.1.1 - Create bucket (us-east-1):-
+aws s3api create-bucket --bucket my-example-bucket-ab --region us-east-1
+-   001.1.2 - Create bucket (other regions):-
+aws s3api create-bucket --bucket my-example-bucket-ab --region eu-west-1 --create-bucket-configuration LocationConstraint=eu-west-1
+> 001.2 List Buckets
+-   001.2.1 - Basic list (table view):-
+aws s3api list-buckets --query "Buckets[].Name" --output table
+> 001.3 Upload Objects
+-   001.3.1 - Upload single file:-
+aws s3 cp file.txt s3://my-example-bucket-ab/
+-   001.3.2 - Sync folder upload:-
+aws s3 sync path/to/local/directory/ s3://my-example-bucket-ab/
+> 001.4 Download Objects
+-   001.4.1 - Download single file:-
+aws s3 cp s3://my-example-bucket-ab/file.txt .
+-   001.4.2 - Sync full bucket download:-
+aws s3 sync s3://my-example-bucket-ab/ path/to/local/directory/
+> 001.5 List Objects
+-   001.5.1 - Basic object list:-
+aws s3api list-objects --bucket my-example-bucket-ab
+-   001.5.2 - List object keys only:-
+aws s3api list-objects --bucket my-example-bucket-ab --query "Contents[].Key"
+-   001.5.3 - Table view output:-
+aws s3api list-objects --bucket my-example-bucket-ab --output table
+> 001.6 Delete Objects
+-   001.6.1 - Delete single object:-
+aws s3 rm s3://my-example-bucket-ab/file.txt
+-   001.6.2 - Delete all objects in bucket:-
+aws s3 rm s3://my-example-bucket-ab/ --recursive
+> 001.7 Delete Bucket
+-   001.7.1 - Delete empty bucket:-
+aws s3api delete-bucket --bucket my-example-bucket-ab
+-   001.7.2 - Force delete flow (empty then remove):-
+aws s3 rm s3://my-example-bucket-ab/ --recursive
+aws s3api delete-bucket --bucket my-example-bucket-ab
+> 001.8 Advanced Operations
+-   001.8.1 - Get object metadata:-
+aws s3api head-object --bucket my-example-bucket-ab --key file.txt
+-   001.8.2 - Enable versioning:-
+aws s3api put-bucket-versioning --bucket my-example-bucket-ab --versioning-configuration Status=Enabled
+-   001.8.3 - Check versioning status:-
+aws s3api get-bucket-versioning --bucket my-example-bucket-ab
