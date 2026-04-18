@@ -1,1 +1,9 @@
+AWS CLI dev-toolkit
 
+000-ENVIRONMENT/
+>CLI-setup.md & Terminal-basics.md
+-  Turn auto prompt on & off:-
+aws configure set cli_auto_prompt on
+aws configure set cli_auto_prompt off
+-  Check it's status:-
+aws configure get cli_auto_prompt
