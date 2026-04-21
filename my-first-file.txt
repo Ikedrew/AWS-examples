@@ -1,1 +1,3 @@
 Hello, this is my first cloud file
+
+git commit -m "create first lab file"
