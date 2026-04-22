@@ -1,3 +1,6 @@
 Hello, this is my first cloud file
 
-git commit -m "create first lab file"
+# upload gitpod snapshot to github
+git add .
+git commit -m "message"
+git push
